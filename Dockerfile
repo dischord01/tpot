@@ -36,7 +36,18 @@ RUN addgroup --gid 2000 tpot && \
     cp -R /etc/elasticsearch/* /usr/share/elasticsearch/config/ && \
     chown -R tpot:tpot /usr/share/elasticsearch/ && \
     /opt/kibana/bin/kibana plugin -i tagcloud -u https://github.com/stormpython/tagcloud/archive/master.zip && \
-    /opt/kibana/bin/kibana plugin -i heatmap -u https://github.com/stormpython/heatmap/archive/master.zip
+    /opt/kibana/bin/kibana plugin -i heatmap -u https://github.com/stormpython/heatmap/archive/master.zip && \
+    mkdir -p /data/ \
+             /data/elk/ /data/elk/log/ /data/elk/data/ \
+             /data/conpot/log/ \
+             /data/cowrie/log/tty/ /data/cowrie/downloads/ /data/cowrie/keys/ /data/cowrie/misc/ \
+             /data/dionaea/log/ /data/dionaea/bistreams/ /data/dionaea/binaries/ /data/dionaea/rtp/ /data/dionaea/wwwroot/ \
+             /data/elasticpot/log/ \
+             /data/glastopf/ \
+             /data/honeytrap/log/ /data/honeytrap/attacks/ /data/honeytrap/downloads/ \
+             /data/emobility/log/ \
+             /data/ews/log/ /data/ews/conf/ /data/ews/dionaea/ /data/ews/emobility/ \
+             /data/suricata/log/
 
 # Clean up
 RUN apt-get remove wget -y && \
