@@ -1,9 +1,10 @@
 ### New node and cluster name, activate later
 ### cluster.name: tpotcluster
 ### node.name: "tpotcluster-node-01"
-index.number_of_shards: 1
+# index.number_of_shards: 1
 
-index.number_of_replicas: 0
+# index.number_of_replicas: 0
+
 path:
   logs: /data/elk/log
   data: /data/elk/data
@@ -12,3 +13,4 @@ path:
 
 network.host: 0.0.0.0
 
+verify_ssl: false

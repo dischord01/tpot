@@ -27,11 +27,11 @@ ADD elasticsearch.yml /etc/elasticsearch/elasticsearch.yml
 ADD logstash.conf /etc/logstash/conf.d/logstash.conf
 ADD kibana.svg /opt/kibana/src/ui/public/images/kibana.svg
 ADD kibana.svg /opt/kibana/optimize/bundles/src/ui/public/images/kibana.svg
+ADD kibana.yml /opt/kibana/config/kibana.yml
 ADD elk.ico /opt/kibana/src/ui/public/images/elk.ico
 ADD elk.ico /opt/kibana/optimize/bundles/src/ui/public/images/elk.ico
 RUN addgroup --gid 2000 tpot && \
     adduser --system --no-create-home --shell /bin/bash --uid 2000 --disabled-password --disabled-login --gid 2000 tpot && \
-    sed -i 's/# kibana.defaultAppId: "discover"/kibana.defaultAppId: "dashboard\/Default"/' /opt/kibana/config/kibana.yml && \
     mkdir -p /usr/share/elasticsearch/config && \
     cp -R /etc/elasticsearch/* /usr/share/elasticsearch/config/ && \
     chown -R tpot:tpot /usr/share/elasticsearch/ && \
