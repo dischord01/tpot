@@ -13,4 +13,3 @@ path:
 
 network.host: 0.0.0.0
 
-verify_ssl: false
