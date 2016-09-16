@@ -1,8 +1,8 @@
-# ELK4 Dockerfile by MO
+# ELK4 Dockerfile
 #
 # VERSION 16.03.7
 FROM ubuntu:14.04.4
-MAINTAINER MO
+MAINTAINER bsollar@redhat.com
 
 # Setup env and apt
 ENV DEBIAN_FRONTEND noninteractive
@@ -31,7 +31,6 @@ ADD elk.ico /opt/kibana/src/ui/public/images/elk.ico
 ADD elk.ico /opt/kibana/optimize/bundles/src/ui/public/images/elk.ico
 RUN addgroup --gid 2000 tpot && \
     adduser --system --no-create-home --shell /bin/bash --uid 2000 --disabled-password --disabled-login --gid 2000 tpot && \
-    sed -i 's/# server.port: 5601/server.port: 8080/' /opt/kibana/config/kibana.yml && \
     sed -i 's/# kibana.defaultAppId: "discover"/kibana.defaultAppId: "dashboard\/Default"/' /opt/kibana/config/kibana.yml && \
     mkdir -p /usr/share/elasticsearch/config && \
     cp -R /etc/elasticsearch/* /usr/share/elasticsearch/config/ && \
@@ -44,6 +43,8 @@ RUN apt-get remove wget -y && \
     apt-get autoremove -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+EXPOSE 5601 9200 9300
 
 # Start ELK
 CMD ["/usr/bin/supervisord","-c","/etc/supervisor/supervisord.conf"]
