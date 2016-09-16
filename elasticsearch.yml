@@ -2,10 +2,13 @@
 ### cluster.name: tpotcluster
 ### node.name: "tpotcluster-node-01"
 index.number_of_shards: 1
+
 index.number_of_replicas: 0
 path:
-    logs: /data/elk/log
-    data: /data/elk/data
+  logs: /data/elk/log
+  data: /data/elk/data
+
 http.host: 0.0.0.0
+
 network.host: 0.0.0.0
 
